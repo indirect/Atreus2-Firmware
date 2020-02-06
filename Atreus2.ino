@@ -33,7 +33,7 @@
 #define TG(n) LockLayer(n)
 
 enum {
-  LAYER_QWERTY
+  LAYER_DVORAK
 };
 
 #define Key_Exclamation LSHIFT(Key_1)
@@ -47,24 +47,37 @@ enum {
 #define Key_Plus LSHIFT(Key_Equals)
 
 enum {
-  QWERTY,
+  DVORAK,
   FUN,
   UPPER
 };
 
 /* *INDENT-OFF* */
 KEYMAPS(
-  [QWERTY] = KEYMAP_STACKED
-  (
-       Key_Q   ,Key_W   ,Key_E       ,Key_R         ,Key_T
-      ,Key_A   ,Key_S   ,Key_D       ,Key_F         ,Key_G
-      ,Key_Z   ,Key_X   ,Key_C       ,Key_V         ,Key_B, Key_Backtick
-      ,Key_Esc ,Key_Tab ,Key_LeftGui ,Key_LeftShift ,Key_Backspace ,Key_LeftControl
+/*   [QWERTY] = KEYMAP_STACKED */
+/*   ( */
+/*        Key_Q   ,Key_W   ,Key_E       ,Key_R         ,Key_T */
+/*       ,Key_A   ,Key_S   ,Key_D       ,Key_F         ,Key_G */
+/*       ,Key_Z   ,Key_X   ,Key_C       ,Key_V         ,Key_B, Key_Backtick */
+/*       ,Key_Esc ,Key_Tab ,Key_LeftGui ,Key_LeftShift ,Key_Backspace ,Key_LeftControl */
 
-                     ,Key_Y     ,Key_U      ,Key_I     ,Key_O      ,Key_P
-                     ,Key_H     ,Key_J      ,Key_K     ,Key_L      ,Key_Semicolon
-       ,Key_Backslash,Key_N     ,Key_M      ,Key_Comma ,Key_Period ,Key_Slash
-       ,Key_LeftAlt  ,Key_Space ,MO(FUN)    ,Key_Minus ,Key_Quote  ,Key_Enter
+/*                      ,Key_Y     ,Key_U      ,Key_I     ,Key_O      ,Key_P */
+/*                      ,Key_H     ,Key_J      ,Key_K     ,Key_L      ,Key_Semicolon */
+/*        ,Key_Backslash,Key_N     ,Key_M      ,Key_Comma ,Key_Period ,Key_Slash */
+/*        ,Key_LeftAlt  ,Key_Space ,MO(FUN)    ,Key_Minus ,Key_Quote  ,Key_Enter */
+/*   ), */
+
+  [DVORAK] = KEYMAP_STACKED
+  (
+       Key_Quote     ,Key_Comma ,Key_Period  ,Key_P         ,Key_Y
+      ,Key_A         ,Key_O     ,Key_E       ,Key_U         ,Key_I
+      ,Key_Semicolon ,Key_Q     ,Key_J       ,Key_K         ,Key_X         ,Key_Backtick
+      ,Key_Esc       ,Key_Tab   ,Key_LeftGui ,Key_LeftShift ,Key_Backspace ,Key_LeftControl
+
+                      ,Key_F     ,Key_G   ,Key_C     ,Key_R     ,Key_L
+                      ,Key_D     ,Key_H   ,Key_T     ,Key_N     ,Key_S
+       ,Key_Backslash ,Key_B     ,Key_M   ,Key_W     ,Key_V     ,Key_Z
+       ,Key_LeftAlt   ,Key_Space ,MO(FUN) ,Key_Minus ,Key_Slash ,Key_Enter
   ),
 
   [FUN] = KEYMAP_STACKED
@@ -85,12 +98,12 @@ KEYMAPS(
        Key_Insert ,Key_Home                 ,Key_UpArrow   ,Key_End        ,Key_PageUp
       ,Key_Delete ,Key_LeftArrow            ,Key_DownArrow ,Key_RightArrow ,Key_PageDown
       ,XXX        ,Consumer_VolumeIncrement ,XXX           ,XXX            ,___ ,___
-      ,M(QWERTY)  ,Consumer_VolumeDecrement ,___           ,___            ,___ ,___
+      ,M(DVORAK)  ,Consumer_VolumeDecrement ,___           ,___            ,___ ,___
 
                 ,Key_UpArrow   ,Key_F7 ,Key_F8          ,Key_F9         ,Key_F10
                 ,Key_DownArrow ,Key_F4 ,Key_F5          ,Key_F6         ,Key_F11
       ,___      ,XXX           ,Key_F1 ,Key_F2          ,Key_F3         ,Key_F12
-      ,___      ,___           ,M(QWERTY)  ,Key_PrintScreen ,Key_ScrollLock ,Consumer_PlaySlashPause
+      ,___      ,___           ,M(DVORAK)  ,Key_PrintScreen ,Key_ScrollLock ,Consumer_PlaySlashPause
    )
 )
 /* *INDENT-ON* */
@@ -110,8 +123,8 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   switch (macroIndex) {
-  case QWERTY:
-    Layer.move(LAYER_QWERTY);
+  case DVORAK:
+    Layer.move(LAYER_DVORAK);
     break;
   default:
     break;
