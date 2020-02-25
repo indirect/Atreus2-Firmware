@@ -1,0 +1,8 @@
+#!/bin/bash
+set -v
+
+stty -f /dev/cu.usbmodemCatreusE1 1200
+sleep 2
+
+export DEVICE_PORT_BOOTLOADER=/dev/cu.usbmodem14101
+make flash
