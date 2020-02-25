@@ -32,8 +32,10 @@
 #define MO(n) ShiftToLayer(n)
 #define TG(n) LockLayer(n)
 
+// Macros
 enum {
-  LAYER_DVORAK
+  DVORAK_LAYER,
+  QUKEYS,
 };
 
 #define Key_Exclamation LSHIFT(Key_1)
@@ -46,6 +48,7 @@ enum {
 #define Key_Star LSHIFT(Key_8)
 #define Key_Plus LSHIFT(Key_Equals)
 
+// Keymaps
 enum {
   DVORAK,
   FUN,
@@ -60,12 +63,12 @@ KEYMAPS(
        Key_Quote     ,Key_Comma ,Key_Period  ,Key_P         ,Key_Y
       ,Key_A         ,Key_O     ,Key_E       ,Key_U         ,Key_I
       ,Key_Semicolon ,Key_Q     ,Key_J       ,Key_K         ,Key_X         ,Key_Backtick
-      ,Key_Esc       ,Key_Tab   ,Key_LeftGui ,Key_LeftShift ,Key_Backspace ,Key_LeftControl
+      ,Key_Esc       ,Key_Tab   ,Key_LeftGui ,OSM(LeftShift) ,Key_Backspace ,Key_LeftControl
 
                       ,Key_F     ,Key_G   ,Key_C     ,Key_R     ,Key_L
                       ,Key_D     ,Key_H   ,Key_T     ,Key_N     ,Key_S
        ,Key_Backslash ,Key_B     ,Key_M   ,Key_W     ,Key_V     ,Key_Z
-       ,Key_LeftAlt   ,Key_Space ,MO(FUN) ,Key_Minus ,Key_Slash ,Key_Enter
+       ,Key_LeftAlt   ,Key_Space ,OSL(FUN) ,Key_Minus ,Key_Slash ,Key_Enter
   ),
 
   [FUN] = KEYMAP_STACKED
@@ -85,8 +88,8 @@ KEYMAPS(
   (
        Key_Insert ,Key_Home                 ,Key_UpArrow   ,Key_End        ,Key_PageUp
       ,Key_Delete ,Key_LeftArrow            ,Key_DownArrow ,Key_RightArrow ,Key_PageDown
-      ,XXX        ,Consumer_VolumeIncrement ,XXX           ,XXX            ,___ ,___
-      ,M(DVORAK)  ,Consumer_VolumeDecrement ,___           ,___            ,___ ,___
+      ,XXX        ,Consumer_VolumeIncrement ,XXX           ,XXX            ,___          ,___
+      ,M(DVORAK)  ,Consumer_VolumeDecrement ,___           ,___            ,___          ,M(QUKEYS)
 
                 ,Key_UpArrow   ,Key_F7 ,Key_F8          ,Key_F9         ,Key_F10
                 ,Key_DownArrow ,Key_F4 ,Key_F5          ,Key_F6         ,Key_F11
@@ -111,8 +114,11 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   switch (macroIndex) {
+  case QUKEYS:
+    Qukeys.toggle();
+    break;
   case DVORAK:
-    Layer.move(LAYER_DVORAK);
+    Layer.move(DVORAK);
     break;
   default:
     break;
@@ -122,6 +128,21 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 }
 
 void setup() {
+  QUKEYS(
+    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 0), Key_LeftShift), // A
+
+    // left-side modifiers
+    /* kaleidoscope::plugin::Qukey(0, KeyAddr(1, 0), Key_LeftGui),      // A */
+    /* kaleidoscope::plugin::Qukey(0, KeyAddr(1, 1), Key_LeftAlt),      // S */
+    /* kaleidoscope::plugin::Qukey(0, KeyAddr(1, 2), Key_LeftControl),  // D */
+    /* kaleidoscope::plugin::Qukey(0, KeyAddr(1, 3), Key_LeftShift),    // F */
+    // left-side layer shifts
+    /* kaleidoscope::plugin::Qukey(0, KeyAddr(3, 3), ShiftToLayer(NUMPAD)),    // C */
+    /* kaleidoscope::plugin::Qukey(0, KeyAddr(3, 4), ShiftToLayer(FUNCTION)),  // V */
+  )
+  Qukeys.setHoldTimeout(250);
+  Qukeys.setOverlapThreshold(80);
+
   Kaleidoscope.setup();
   SpaceCadet.disable();
   EEPROMKeymap.setup(5);
