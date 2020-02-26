@@ -132,12 +132,14 @@ void setup() {
     kaleidoscope::plugin::Qukey(0, KeyAddr(1, 0), Key_LeftControl), // A
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 0), Key_LeftShift),   // Z
 
-    // left-side modifiers
+    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 11), Key_LeftControl), // :
+    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 11), Key_LeftShift),   // ?
+
+    // qukeys examples
     /* kaleidoscope::plugin::Qukey(0, KeyAddr(1, 0), Key_LeftGui),      // A */
     /* kaleidoscope::plugin::Qukey(0, KeyAddr(1, 1), Key_LeftAlt),      // S */
     /* kaleidoscope::plugin::Qukey(0, KeyAddr(1, 2), Key_LeftControl),  // D */
     /* kaleidoscope::plugin::Qukey(0, KeyAddr(1, 3), Key_LeftShift),    // F */
-    // left-side layer shifts
     /* kaleidoscope::plugin::Qukey(0, KeyAddr(3, 3), ShiftToLayer(NUMPAD)),    // C */
     /* kaleidoscope::plugin::Qukey(0, KeyAddr(3, 4), ShiftToLayer(FUNCTION)),  // V */
   )
