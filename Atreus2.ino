@@ -68,7 +68,7 @@ KEYMAPS(
                       ,Key_F     ,Key_G   ,Key_C     ,Key_R     ,Key_L
                       ,Key_D     ,Key_H   ,Key_T     ,Key_N     ,Key_S
        ,Key_Backslash ,Key_B     ,Key_M   ,Key_W     ,Key_V     ,Key_Z
-       ,Key_LeftAlt   ,Key_Space ,OSL(FUN) ,Key_Minus ,Key_Slash ,Key_Enter
+       ,Key_LeftAlt   ,Key_Space ,MO(FUN) ,Key_Minus ,Key_Slash ,Key_Enter
   ),
 
   [FUN] = KEYMAP_STACKED
