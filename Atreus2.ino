@@ -129,7 +129,8 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
 void setup() {
   QUKEYS(
-    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 0), Key_LeftShift), // A
+    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 0), Key_LeftControl), // A
+    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 0), Key_LeftShift),   // Z
 
     // left-side modifiers
     /* kaleidoscope::plugin::Qukey(0, KeyAddr(1, 0), Key_LeftGui),      // A */
