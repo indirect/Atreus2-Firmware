@@ -1,6 +1,8 @@
 #!/bin/bash
 set -v
 
+make maybe_build
+
 stty -f /dev/cu.usbmodemCatreusE1 1200
 sleep 2
 
