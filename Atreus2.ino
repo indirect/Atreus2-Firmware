@@ -60,10 +60,10 @@ KEYMAPS(
 
   [DVORAK] = KEYMAP_STACKED
   (
-       Key_Quote     ,Key_Comma ,Key_Period  ,Key_P         ,Key_Y
-      ,Key_A         ,Key_O     ,Key_E       ,Key_U         ,Key_I
-      ,Key_Semicolon ,Key_Q     ,Key_J       ,Key_K         ,Key_X         ,Key_Backtick
-      ,Key_Esc       ,Key_Tab   ,Key_LeftGui ,OSM(LeftShift) ,Key_Backspace ,Key_LeftControl
+       Key_Quote     ,Key_Comma ,Key_Period   ,Key_P          ,Key_Y
+      ,Key_A         ,Key_O     ,Key_E        ,Key_U          ,Key_I
+      ,Key_Semicolon ,Key_Q     ,Key_J        ,Key_K          ,Key_X         ,Key_Backtick
+      ,Key_Esc       ,Key_Tab   ,OSM(LeftGui) ,OSM(LeftShift) ,Key_Backspace ,Key_LeftControl
 
                       ,Key_F     ,Key_G   ,Key_C     ,Key_R     ,Key_L
                       ,Key_D     ,Key_H   ,Key_T     ,Key_N     ,Key_S
