@@ -127,6 +127,7 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   return MACRO_NONE;
 }
 
+// https://github.com/keyboardio/Kaleidoscope/blob/master/src/kaleidoscope/device/technomancy/Atreus2.h
 void setup() {
   QUKEYS(
     kaleidoscope::plugin::Qukey(0, KeyAddr(1, 0), Key_LeftControl), // A
@@ -135,13 +136,8 @@ void setup() {
     kaleidoscope::plugin::Qukey(0, KeyAddr(1, 11), Key_LeftControl), // :
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 11), Key_LeftShift),   // ?
 
-    // qukeys examples
-    /* kaleidoscope::plugin::Qukey(0, KeyAddr(1, 0), Key_LeftGui),      // A */
-    /* kaleidoscope::plugin::Qukey(0, KeyAddr(1, 1), Key_LeftAlt),      // S */
-    /* kaleidoscope::plugin::Qukey(0, KeyAddr(1, 2), Key_LeftControl),  // D */
-    /* kaleidoscope::plugin::Qukey(0, KeyAddr(1, 3), Key_LeftShift),    // F */
-    /* kaleidoscope::plugin::Qukey(0, KeyAddr(3, 3), ShiftToLayer(NUMPAD)),    // C */
-    /* kaleidoscope::plugin::Qukey(0, KeyAddr(3, 4), ShiftToLayer(FUNCTION)),  // V */
+    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 5), Key_Esc),   // Esc
+    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 6), Key_Enter), // Enter
   )
   Qukeys.setHoldTimeout(250);
   Qukeys.setOverlapThreshold(80);
