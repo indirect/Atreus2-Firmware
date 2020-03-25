@@ -68,7 +68,7 @@ KEYMAPS(
                       ,Key_F     ,Key_G   ,Key_C     ,Key_R     ,Key_L
                       ,Key_D     ,Key_H   ,Key_T     ,Key_N     ,Key_S
        ,Key_Backslash ,Key_B     ,Key_M   ,Key_W     ,Key_V     ,Key_Z
-       ,Key_LeftAlt   ,Key_Space ,MO(FUN) ,Key_Minus ,Key_Slash ,Key_Enter
+       ,OSM(LeftAlt)  ,Key_Space ,MO(FUN) ,Key_Minus ,Key_Slash ,Key_Enter
   ),
 
   [FUN] = KEYMAP_STACKED
@@ -130,14 +130,14 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 // https://github.com/keyboardio/Kaleidoscope/blob/master/src/kaleidoscope/device/technomancy/Atreus2.h
 void setup() {
   QUKEYS(
-    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 0), Key_LeftControl), // A
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 0), Key_LeftShift),   // Z
+    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 0), Key_LeftControl), // a
+    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 0), Key_LeftShift),   // ;
 
-    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 11), Key_LeftControl), // :
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 11), Key_LeftShift),   // ?
+    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 11), Key_LeftControl), // s
+    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 11), Key_LeftShift),   // z
 
-    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 5), Key_Esc),   // Esc
-    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 6), Key_Enter), // Enter
+    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 5), Key_Tab),   // Tab on left thumb / ctl
+    // kaleidoscope::plugin::Qukey(0, KeyAddr(3, 6), Key_Enter), // Enter on right thumb / alt
   )
   Qukeys.setHoldTimeout(250);
   Qukeys.setOverlapThreshold(80);
