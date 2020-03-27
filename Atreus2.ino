@@ -26,16 +26,16 @@
 #include "Kaleidoscope-OneShot.h"
 #include "Kaleidoscope-Qukeys.h"
 #include "Kaleidoscope-SpaceCadet.h"
-
-
+#include "Kaleidoscope-USB-Quirks.h"
 
 #define MO(n) ShiftToLayer(n)
 #define TG(n) LockLayer(n)
 
 // Macros
 enum {
-  DVORAK_LAYER,
+  DVORAK_MACRO,
   QUKEYS,
+  QUIRKS,
 };
 
 #define Key_Exclamation LSHIFT(Key_1)
@@ -79,7 +79,7 @@ KEYMAPS(
       ,TG(UPPER)       ,Key_Insert       ,Key_LeftGui   ,Key_LeftShift        ,Key_Delete            ,Key_LeftControl
 
                    ,Key_PageUp   ,Key_7 ,Key_8      ,Key_9 ,Key_Backspace
-                   ,Key_PageDown ,Key_4 ,Key_5      ,Key_6 ,___
+                   ,Key_PageDown ,Key_4 ,Key_5      ,Key_6 ,M(QUIRKS)
       ,Key_And     ,Key_Star     ,Key_1 ,Key_2      ,Key_3 ,Key_Plus
       ,Key_LeftAlt ,Key_Space    ,___   ,Key_Period ,Key_0 ,Key_Equals
    ),
@@ -109,7 +109,8 @@ KALEIDOSCOPE_INIT_PLUGINS(
   SpaceCadet,
   MouseKeys,
   Macros,
-  Qukeys
+  Qukeys,
+  USBQuirks
 );
 
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
@@ -119,6 +120,9 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     break;
   case DVORAK:
     Layer.move(DVORAK);
+    break;
+  case QUIRKS:
+    USBQuirks.toggleKeyboardProtocol();
     break;
   default:
     break;
