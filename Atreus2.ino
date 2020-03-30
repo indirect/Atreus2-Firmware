@@ -24,7 +24,7 @@
 #include "Kaleidoscope-Macros.h"
 #include "Kaleidoscope-MouseKeys.h"
 #include "Kaleidoscope-OneShot.h"
-#include "Kaleidoscope-Qukeys.h"
+/* #include "Kaleidoscope-Qukeys.h" */
 #include "Kaleidoscope-USB-Quirks.h"
 
 #define MO(n) ShiftToLayer(n)
@@ -107,14 +107,14 @@ KALEIDOSCOPE_INIT_PLUGINS(
   OneShot,
   MouseKeys,
   Macros,
-  Qukeys,
+  /* Qukeys, */
   USBQuirks
 );
 
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   switch (macroIndex) {
   case QUKEYS:
-    Qukeys.toggle();
+    /* Qukeys.toggle(); */
     break;
   case DVORAK:
     Layer.move(DVORAK);
@@ -131,20 +131,20 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
 // https://github.com/keyboardio/Kaleidoscope/blob/master/src/kaleidoscope/device/technomancy/Atreus2.h
 void setup() {
-  QUKEYS(
-    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 0), Key_LeftControl), // a
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 0), Key_LeftShift),   // ;
+  /* QUKEYS( */
+  /*   kaleidoscope::plugin::Qukey(0, KeyAddr(1, 0), Key_LeftControl), // a */
+  /*   kaleidoscope::plugin::Qukey(0, KeyAddr(2, 0), Key_LeftShift),   // ; */
 
-    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 11), Key_LeftControl), // s
-    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 11), Key_LeftShift),   // z
+  /*   kaleidoscope::plugin::Qukey(0, KeyAddr(1, 11), Key_LeftControl), // s */
+  /*   kaleidoscope::plugin::Qukey(0, KeyAddr(2, 11), Key_LeftShift),   // z */
 
-    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 5), Key_Tab),   // Tab on left thumb / ctl
-    // kaleidoscope::plugin::Qukey(0, KeyAddr(3, 6), Key_Enter), // Enter on right thumb / alt
-  )
-  Qukeys.setHoldTimeout(250);
-  Qukeys.setOverlapThreshold(80);
-  // Start with Qukeys off
-  Qukeys.toggle();
+  /*   kaleidoscope::plugin::Qukey(0, KeyAddr(3, 5), Key_Tab),   // Tab on left thumb / ctl */
+  /*   // kaleidoscope::plugin::Qukey(0, KeyAddr(3, 6), Key_Enter), // Enter on right thumb / alt */
+  /* ) */
+  /* Qukeys.setHoldTimeout(250); */
+  /* Qukeys.setOverlapThreshold(80); */
+  /* // Start with Qukeys off */
+  /* Qukeys.toggle(); */
 
   Kaleidoscope.setup();
   EEPROMKeymap.setup(5);
