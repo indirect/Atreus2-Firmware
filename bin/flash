@@ -3,7 +3,8 @@ set -v
 
 make maybe_build
 
-stty -f /dev/cu.usbmodemCatreusE1 1200
+export DEVICE=$(ls /dev/cu.usbmodem* | grep -i atreus)
+stty -f "$DEVICE" 1200
 sleep 3
 
 export DEVICE_PORT_BOOTLOADER=$(ls /dev/cu.usbmodem* | grep -v usbmodemC)
