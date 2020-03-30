@@ -25,7 +25,6 @@
 #include "Kaleidoscope-MouseKeys.h"
 #include "Kaleidoscope-OneShot.h"
 #include "Kaleidoscope-Qukeys.h"
-#include "Kaleidoscope-SpaceCadet.h"
 #include "Kaleidoscope-USB-Quirks.h"
 
 #define MO(n) ShiftToLayer(n)
@@ -106,7 +105,6 @@ KALEIDOSCOPE_INIT_PLUGINS(
   FocusEEPROMCommand,
   FocusSettingsCommand,
   OneShot,
-  SpaceCadet,
   MouseKeys,
   Macros,
   Qukeys,
@@ -149,7 +147,6 @@ void setup() {
   Qukeys.toggle();
 
   Kaleidoscope.setup();
-  SpaceCadet.disable();
   EEPROMKeymap.setup(5);
 }
 
