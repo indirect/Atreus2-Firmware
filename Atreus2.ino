@@ -19,12 +19,8 @@
 
 #include "Kaleidoscope.h"
 #include "Kaleidoscope-EEPROM-Settings.h"
-#include "Kaleidoscope-EEPROM-Keymap.h"
 #include "Kaleidoscope-FocusSerial.h"
 #include "Kaleidoscope-Macros.h"
-#include "Kaleidoscope-MouseKeys.h"
-#include "Kaleidoscope-OneShot.h"
-/* #include "Kaleidoscope-Qukeys.h" */
 #include "Kaleidoscope-USB-Quirks.h"
 
 #define MO(n) ShiftToLayer(n)
@@ -62,12 +58,12 @@ KEYMAPS(
        Key_Quote     ,Key_Comma ,Key_Period   ,Key_P          ,Key_Y
       ,Key_A         ,Key_O     ,Key_E        ,Key_U          ,Key_I
       ,Key_Semicolon ,Key_Q     ,Key_J        ,Key_K          ,Key_X         ,Key_Backtick
-      ,Key_Esc       ,Key_Tab   ,OSM(LeftGui) ,OSM(LeftShift) ,Key_Backspace ,Key_LeftControl
+      ,Key_Esc       ,Key_Tab   ,Key_LeftGui ,Key_LeftShift ,Key_Backspace ,Key_LeftControl
 
                       ,Key_F     ,Key_G   ,Key_C     ,Key_R     ,Key_L
                       ,Key_D     ,Key_H   ,Key_T     ,Key_N     ,Key_S
        ,Key_Backslash ,Key_B     ,Key_M   ,Key_W     ,Key_V     ,Key_Z
-       ,OSM(LeftAlt)  ,Key_Space ,MO(FUN) ,Key_Minus ,Key_Slash ,Key_Enter
+       ,Key_LeftAlt  ,Key_Space ,MO(FUN) ,Key_Minus ,Key_Slash ,Key_Enter
   ),
 
   [FUN] = KEYMAP_STACKED
@@ -99,23 +95,14 @@ KEYMAPS(
 /* *INDENT-ON* */
 
 KALEIDOSCOPE_INIT_PLUGINS(
-  EEPROMSettings,
-  EEPROMKeymap,
   Focus,
-  FocusEEPROMCommand,
   FocusSettingsCommand,
-  OneShot,
-  MouseKeys,
   Macros,
-  /* Qukeys, */
   USBQuirks
 );
 
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   switch (macroIndex) {
-  case QUKEYS:
-    /* Qukeys.toggle(); */
-    break;
   case DVORAK:
     Layer.move(DVORAK);
     break;
@@ -131,23 +118,7 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
 // https://github.com/keyboardio/Kaleidoscope/blob/master/src/kaleidoscope/device/technomancy/Atreus2.h
 void setup() {
-  /* QUKEYS( */
-  /*   kaleidoscope::plugin::Qukey(0, KeyAddr(1, 0), Key_LeftControl), // a */
-  /*   kaleidoscope::plugin::Qukey(0, KeyAddr(2, 0), Key_LeftShift),   // ; */
-
-  /*   kaleidoscope::plugin::Qukey(0, KeyAddr(1, 11), Key_LeftControl), // s */
-  /*   kaleidoscope::plugin::Qukey(0, KeyAddr(2, 11), Key_LeftShift),   // z */
-
-  /*   kaleidoscope::plugin::Qukey(0, KeyAddr(3, 5), Key_Tab),   // Tab on left thumb / ctl */
-  /*   // kaleidoscope::plugin::Qukey(0, KeyAddr(3, 6), Key_Enter), // Enter on right thumb / alt */
-  /* ) */
-  /* Qukeys.setHoldTimeout(250); */
-  /* Qukeys.setOverlapThreshold(80); */
-  /* // Start with Qukeys off */
-  /* Qukeys.toggle(); */
-
   Kaleidoscope.setup();
-  EEPROMKeymap.setup(5);
 }
 
 void loop() {
