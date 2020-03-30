@@ -145,6 +145,8 @@ void setup() {
   )
   Qukeys.setHoldTimeout(250);
   Qukeys.setOverlapThreshold(80);
+  // Start with Qukeys off
+  Qukeys.toggle();
 
   Kaleidoscope.setup();
   SpaceCadet.disable();
