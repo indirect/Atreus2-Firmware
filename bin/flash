@@ -3,7 +3,7 @@ set -v
 
 make maybe_build
 
-export DEVICE=$(ls /dev/cu.usbmodem* | grep -i atreus || ls /dev/cu.usbmodemC*)
+export DEVICE=$(ls /dev/cu.usbmodem* | grep -i atreus || ls /dev/cu.usbmodemC* | grep -v kbio)
 stty -f "$DEVICE" 1200
 sleep 3
 
